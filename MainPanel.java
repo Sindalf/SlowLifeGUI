@@ -32,6 +32,8 @@ public class MainPanel extends JPanel {
     }
 
     private int convertToInt(int x) {
+        return x;
+       /* System.out.println("old int " + x);
 	int c = 0;
 	String padding = "0";
 	while (c < _r) {
@@ -42,7 +44,9 @@ public class MainPanel extends JPanel {
 	
 	String n = padding + String.valueOf(x);
 	int q = Integer.parseInt(n);
+        System.out.println("new int " + q);
 	return q;
+        */
     }
     
     private int getNumNeighbors(int x, int y) {
@@ -126,7 +130,7 @@ public class MainPanel extends JPanel {
      */
     
     public void backup() {
-	_backupCells = new Cell[_size][_size];
+	//_backupCells = new Cell[_size][_size];
 	for (int j = 0; j < _size; j++) {
 	    for (int k = 0; k < _size; k++) {
 		_backupCells[j][k] = new Cell();
@@ -342,6 +346,7 @@ public class MainPanel extends JPanel {
     public MainPanel(int size) {
 	super();
 	_size = size;
+        _backupCells = new Cell[_size][_size];
 	setLayout(new GridLayout(size, size));
 	_cells = new Cell[size][size];
 	for (int j = 0; j < size; j++) {

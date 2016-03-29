@@ -31,22 +31,29 @@ public class Cell extends JButton {
     }
     
     public boolean getAlive() {
-	String text = getText();
-	return (text.equals("X"));
+	return (getText().equals("X"));
     }
 
     public String toString() {
-	String toReturn = new String("");
+	/*String toReturn = new String("");
 	String currentState = getText();
 	for (int j = 0; j < _maxSize; j++) {
 	    toReturn += currentState;
 	}
+        System.out.println(toReturn);
 	if (toReturn.substring(0,1).equals("X")) {
+            System.out.println(toReturn.substring(0,1));
 	    return toReturn.substring(0,1);
 	} else {
 	    return ".";
 	}
-
+        */
+        if(getText().equals("X")) {
+            return "X";
+        }
+        else {
+            return ".";
+        }
     }
     
     public void setAlive(boolean a) {
