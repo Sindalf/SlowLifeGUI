@@ -7,6 +7,7 @@ public class Cell extends JButton {
     private boolean _beenAlive = false;
 
     private int _maxSize = 10000;
+    private boolean alive = false;
     
     public Cell() {
 	super(" ");
@@ -31,7 +32,7 @@ public class Cell extends JButton {
     }
     
     public boolean getAlive() {
-	return (getText().equals("X"));
+	return (alive);
     }
 
     public String toString() {
@@ -48,7 +49,7 @@ public class Cell extends JButton {
 	    return ".";
 	}
         */
-        if(getText().equals("X")) {
+        if(alive) {
             return "X";
         }
         else {
@@ -61,10 +62,12 @@ public class Cell extends JButton {
 	// really say the same thing!
 	if (a) {
 	    _beenAlive = true;
+            alive = true;
 	    setText("X");
 	    setBackground(Color.RED);
 	} else {
 	    setText(" ");
+            alive = false;
 	    if (_beenAlive) {
 		setBackground(Color.GREEN);
 	    } else {
