@@ -6,10 +6,10 @@ import java.util.*;
 public class MainPanel extends JPanel {
 
     // Current configuration
-    private Cell[][] _cells;
+    public Cell[][] _cells;
 
     // Backup configuration
-    private Cell[][] _backupCells;
+    public Cell[][] _backupCells;
 
     private int _size = 0;
 
@@ -31,22 +31,25 @@ public class MainPanel extends JPanel {
         return _cells;
     }
 
-    private int convertToInt(int x) {
+    public int convertToInt(int x) {
         return x;
-        /* System.out.println("old int " + x);
-	int c = 0;
-	String padding = "0";
-	while (c < _r) {
-	    String l = new String("0");
-	    padding += l;
-	    c++;
-	}
-	
-	String n = padding + String.valueOf(x);
-	int q = Integer.parseInt(n);
-        System.out.println("new int " + q);
-	return q;
-         */
+    }
+
+    public int OldconvertToInt(int x) {
+        //  System.out.println("old int " + x);
+        int c = 0;
+        String padding = "0";
+        while (c < _r) {
+            String l = new String("0");
+            padding += l;
+            c++;
+        }
+
+        String n = padding + String.valueOf(x);
+        int q = Integer.parseInt(n);
+        //     System.out.println("new int " + q);
+        return q;
+
     }
 
     private int getNumNeighbors(int x, int y) {
@@ -153,6 +156,16 @@ public class MainPanel extends JPanel {
         for (int j = 0; j < _size; j++) {
             for (int k = 0; k < _size; k++) {
                 //_backupCells[j][k] = new Cell();
+                _backupCells[j][k].setAlive(_cells[j][k].getAlive());
+            }
+        }
+    }
+
+    public void Oldbackup() {
+        _backupCells = new Cell[_size][_size];
+        for (int j = 0; j < _size; j++) {
+            for (int k = 0; k < _size; k++) {
+                _backupCells[j][k] = new Cell();
                 _backupCells[j][k].setAlive(_cells[j][k].getAlive());
             }
         }
@@ -343,6 +356,25 @@ public class MainPanel extends JPanel {
 
     }
 
+    public Cell[][] getbackup() {
+        return _backupCells;
+    }
+
+    public MainPanel(int size, boolean SECOND) {
+        super();
+        _size = size;
+        setLayout(new GridLayout(size, size));
+        _cells = new Cell[size][size];
+        for (int j = 0; j < size; j++) {
+            for (int k = 0; k < size; k++) {
+                _cells[j][k] = new Cell();
+                this.add(_cells[j][k]);
+                _cells[j][k].setAlive(false);
+            }
+        }
+
+    }
+
     public MainPanel(int size) {
         super();
         _size = size;
@@ -350,7 +382,6 @@ public class MainPanel extends JPanel {
         for (int w = 0; w < _size; w++) {
             for (int k = 0; k < _size; k++) {
                 _backupCells[w][k] = new Cell();
-               // _backupCells[w][k].setAlive(_cells[w][k].getAlive());
             }
         }
         setLayout(new GridLayout(size, size));
