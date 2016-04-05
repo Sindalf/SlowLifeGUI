@@ -5,10 +5,10 @@ import java.awt.event.*;
 
 public class Cell extends JButton {
 
-    private boolean _beenAlive = false;
+    public boolean _beenAlive = false;
 
     private int _maxSize = 10000;
-    private boolean alive = false;
+    public boolean alive = false;
 
     public Cell() {
         super(" ");
@@ -81,6 +81,25 @@ public class Cell extends JButton {
             }
         }
         setContentAreaFilled(true);
+        setOpaque(true);
+    }
+    
+    public void OldsetAlive(boolean a) {
+	// note that "if (a)" and "if (a == true)"
+	// really say the same thing!
+	if (a) {
+	    _beenAlive = true;
+	    setText("X");
+	    setBackground(Color.RED);
+	} else {
+	    setText(" ");
+	    if (_beenAlive) {
+		setBackground(Color.GREEN);
+	    } else {
+		setBackground(Color.GRAY);
+	    }
+	}
+	setContentAreaFilled(true);
         setOpaque(true);
     }
 
