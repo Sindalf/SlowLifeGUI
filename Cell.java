@@ -109,7 +109,6 @@ public class Cell extends JButton {
         // the following action.
         public void actionPerformed(ActionEvent e) {
             Cell source = (Cell) e.getSource();
-            //String currentText = source.getText();
             resetBeenAlive();
             if (alive == false) {
                 setAlive(true);

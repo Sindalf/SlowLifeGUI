@@ -36,7 +36,6 @@ public class MainPanel extends JPanel {
     }
 
     public int OldconvertToInt(int x) {
-        //  System.out.println("old int " + x);
         int c = 0;
         String padding = "0";
         while (c < _r) {
@@ -47,7 +46,6 @@ public class MainPanel extends JPanel {
 
         String n = padding + String.valueOf(x);
         int q = Integer.parseInt(n);
-        //     System.out.println("new int " + q);
         return q;
 
     }
@@ -152,10 +150,8 @@ public class MainPanel extends JPanel {
      * Make a copy of the current cells and put the copy in the backup cells.
      */
     public void backup() {
-        //_backupCells = new Cell[_size][_size];
         for (int j = 0; j < _size; j++) {
             for (int k = 0; k < _size; k++) {
-                //_backupCells[j][k] = new Cell();
                 _backupCells[j][k].setAlive(_cells[j][k].getAlive());
             }
         }
